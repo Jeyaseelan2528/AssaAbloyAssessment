@@ -15,6 +15,7 @@ import androidx.appcompat.widget.SwitchCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.lockdoor.assaabloyassessment.R
 
+
 class LockConfigurationAdapter(private var list: List<LockModel>) :
     RecyclerView.Adapter<LockConfigurationAdapter.LockViewHolder>() {
     var spinnerList = ArrayList<String>()
@@ -84,7 +85,11 @@ class LockConfigurationAdapter(private var list: List<LockModel>) :
     override fun getItemCount(): Int {
         return list.size
     }
-
+    @SuppressLint("NotifyDataSetChanged")
+    public fun filterList(filterlist: ArrayList<LockModel>) {
+        list = filterlist
+        notifyDataSetChanged()
+    }
     @SuppressLint("ClickableViewAccessibility")
     inner class LockViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var configurationText: TextView
@@ -145,4 +150,5 @@ class LockConfigurationAdapter(private var list: List<LockModel>) :
             }
         }
     }
+
 }
