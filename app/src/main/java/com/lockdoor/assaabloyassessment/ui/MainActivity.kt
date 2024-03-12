@@ -1,6 +1,7 @@
 package com.lockdoor.assaabloyassessment.ui
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
@@ -27,8 +28,10 @@ class MainActivity : AppCompatActivity() {
     lateinit var recyclerView: RecyclerView
     val finalList = ArrayList<LockModel>()
     lateinit var searchView: SearchView
-    var lockAdapter : LockConfigurationAdapter? = null
-    lateinit var btnConfigure: Button
+    var lockAdapter: LockConfigurationAdapter? = null
+    lateinit var btnOk: Button
+    val sharedPreferences = getSharedPreferences("prefs", Context.MODE_PRIVATE)
+    val editor: SharedPreferences.Editor = sharedPreferences.edit()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -40,6 +43,9 @@ class MainActivity : AppCompatActivity() {
         searchView = findViewById(R.id.searchView)
         recyclerView.layoutManager = LinearLayoutManager(this)
         supportActionBar?.title = "Lock Settings"
+
+        btnOk = findViewById(R.id.btnOk);
+
 
         //ShowProgress bar during API call
         progressBar.visibility = View.VISIBLE
@@ -161,7 +167,7 @@ class MainActivity : AppCompatActivity() {
             recyclerView.adapter = lockAdapter
         })
 
-        searchView.setOnQueryTextListener(object : OnQueryTextListener{
+        searchView.setOnQueryTextListener(object : OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 p0?.let { filter(it) }
                 return false
@@ -172,11 +178,46 @@ class MainActivity : AppCompatActivity() {
                 return false
             }
         })
+
+        btnOk.setOnClickListener {
+            val list = lockAdapter?.getLockList()
+
+            if (list!!.isNotEmpty()){
+              for (item in list){
+                  if (item.configurationName.equals("lockVoltage")){
+                      editor.putString("lockVoltagePrimary",item.primaryDefaultValue)
+                      editor.putString("lockVoltageSecondary",item.secondaryDefaultValue)
+                  }else if (item.configurationName.equals("lockType")){
+                      editor.putString("lockTypePrimary",item.primaryDefaultValue)
+                      editor.putString("lockTypeSecondary",item.secondaryDefaultValue)
+                  }
+                  else if (item.configurationName.equals("lockKick")){
+                      editor.putString("lockKickPrimary",item.primaryDefaultValue)
+                      editor.putString("lockKickSecondary",item.secondaryDefaultValue)
+                  }
+                  else if (item.configurationName.equals("lockRelease")){
+                      editor.putString("lockReleasePrimary",item.primaryDefaultValue)
+                      editor.putString("lockReleaseSecondary",item.secondaryDefaultValue)
+                  }
+                  else if (item.configurationName.equals("lockReleaseTime")){
+                      editor.putString("lockReleaseTimePrimary",item.primaryDefaultValue)
+                      editor.putString("lockReleaseTimeSecondary",item.secondaryDefaultValue)
+                  }
+                  else if (item.configurationName.equals("lockAngle")){
+                      editor.putString("lockAnglePrimary",item.primaryDefaultValue)
+                      editor.putString("lockAngleSecondary",item.secondaryDefaultValue)
+                  }
+              }
+            }
+
+        }
     }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
         return true
     }
+
     private fun filter(text: String) {
         val filteredList: ArrayList<LockModel> = ArrayList()
 

@@ -32,6 +32,12 @@ class LockConfigurationAdapter(private var list: List<LockModel>) :
         return LockViewHolder(v)
     }
 
+    public fun getLockList(): List<LockModel> {
+        return list.ifEmpty {
+            ArrayList()
+        }
+    }
+
     override fun onBindViewHolder(holder: LockConfigurationAdapter.LockViewHolder, position: Int) {
         val lockModel = list[position]
 
@@ -150,16 +156,29 @@ class LockConfigurationAdapter(private var list: List<LockModel>) :
             lockReleaseTimePrimaryEdit.onFocusChangeListener =
                 View.OnFocusChangeListener { view, b ->
                     if (!b) {
-                        manageRange(lockReleaseTimePrimaryEdit, itemView.context,list,adapterPosition)
-                        list[adapterPosition].primaryDefaultValue = lockReleaseTimePrimaryEdit.text.toString().trim().toDouble().toString()
+                        manageRange(
+                            lockReleaseTimePrimaryEdit,
+                            itemView.context,
+                            list,
+                            adapterPosition
+                        )
+                        list[adapterPosition].primaryDefaultValue =
+                            lockReleaseTimePrimaryEdit.text.toString().trim().toDouble().toString()
 
                     }
                 }
             lockReleaseTimeSecondaryEdit.onFocusChangeListener =
                 View.OnFocusChangeListener { view, b ->
                     if (!b) {
-                        manageRange(lockReleaseTimeSecondaryEdit, itemView.context,list,adapterPosition)
-                        list[adapterPosition].secondaryDefaultValue = lockReleaseTimeSecondaryEdit.text.toString().trim().toDouble().toString()
+                        manageRange(
+                            lockReleaseTimeSecondaryEdit,
+                            itemView.context,
+                            list,
+                            adapterPosition
+                        )
+                        list[adapterPosition].secondaryDefaultValue =
+                            lockReleaseTimeSecondaryEdit.text.toString().trim().toDouble()
+                                .toString()
                     }
                 }
 
@@ -175,7 +194,8 @@ class LockConfigurationAdapter(private var list: List<LockModel>) :
                 override fun onFocusChange(p0: View?, p1: Boolean) {
                     if (!p1) {
                         manageRangeAngle(edtAngle, itemView.context)
-                        list[adapterPosition].primaryDefaultValue = edtAngle.text.toString().trim().replace("°","")
+                        list[adapterPosition].primaryDefaultValue =
+                            edtAngle.text.toString().trim().replace("°", "")
                     }
                 }
 
@@ -240,7 +260,12 @@ private fun manageRangeAngle(editText: EditText, context: Context) {
     }
 }
 
-private fun manageRange(editText: EditText, context: Context, list: List<LockModel>, position: Int) {
+private fun manageRange(
+    editText: EditText,
+    context: Context,
+    list: List<LockModel>,
+    position: Int
+) {
     if (editText.text.isNotEmpty()) {
         editText.setText(
             editText.text.toString().trim().toDouble()
