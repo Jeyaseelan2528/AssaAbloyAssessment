@@ -2,30 +2,36 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
+        app:cardCornerRadius="5dp"
+        app:cardElevation="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp">
+        android:background="@drawable/edit_background"
+        android:layout_margin="5dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
 
         <LinearLayout
-            android:visibility="visible"
             android:id="@+id/parentLayout"
-            android:layout_margin="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_margin="5dp"
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <TextView
-                android:textSize="18dp"
-                android:textStyle="bold"
                 android:id="@+id/txtConfigurationName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="Lock Voltage" />
+                android:text="Lock Voltage"
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -34,88 +40,166 @@
                 android:weightSum="2">
 
                 <LinearLayout
-                    android:layout_gravity="center_vertical"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:layout_margin="3dp"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
-                        android:textStyle="bold"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
                         android:text="Primary"
-                        android:textColor="@color/app_blue" />
+                        android:gravity="center"
+                        android:textColor="@color/app_blue"
+                        android:textStyle="bold" />
 
-                    <Spinner
-                        android:id="@+id/primarySpinner"
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="5dp" />
+                        android:layout_height="wrap_content">
+
+                        <Spinner
+                            android:gravity="center"
+                            android:id="@+id/primarySpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edit_background" />
+
+                        <ImageView
+                            android:id="@+id/primaryArrow"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/baseline_arrow_drop_down_24" />
+                    </RelativeLayout>
+
                     <EditText
                         android:id="@+id/primaryLockReleaseEditText"
                         android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edit_background"
                         android:hint="Range(0.1 to 2.0)"
+                        android:gravity="center"
+                        android:imeOptions="actionDone"
                         android:inputType="numberDecimal"
-                        android:layout_height="wrap_content"/>
+                        android:padding="8dp" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_gravity="center_vertical"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:layout_margin="3dp"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
-                        android:textStyle="bold"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="right"
+                        android:gravity="center"
                         android:padding="5dp"
                         android:text="Secondary"
-                        android:textColor="@color/app_blue" />
+                        android:layout_gravity="center"
+                        android:textColor="@color/app_blue"
+                        android:textStyle="bold" />
 
-                    <Spinner
-                        android:id="@+id/secondarySpinner"
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="right"
-                        android:padding="5dp" />
+                        android:layout_height="wrap_content">
+
+                        <Spinner
+                            android:id="@+id/secondarySpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edit_background"
+                            android:gravity="center"
+                            />
+
+                        <ImageView
+                            android:id="@+id/secondaryArrow"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/baseline_arrow_drop_down_24" />
+                    </RelativeLayout>
+
                     <EditText
+                        android:gravity="center"
                         android:id="@+id/secondaryLockReleaseEditText"
                         android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edit_background"
                         android:hint="Range(0.1 to 2.0)"
+                        android:imeOptions="actionDone"
                         android:inputType="numberDecimal"
-                        android:layout_height="wrap_content"/>
+                        android:padding="8dp" />
                 </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
+
         <LinearLayout
-            android:visibility="gone"
-            android:orientation="horizontal"
-            android:padding="5dp"
             android:id="@+id/lockReleaseLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:visibility="gone">
+
             <TextView
-                android:textSize="18dp"
-                android:layout_gravity="center_vertical"
-                android:textStyle="bold"
                 android:id="@+id/txtLockRelease"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="Lock Release" />
-            <androidx.appcompat.widget.SwitchCompat
                 android:layout_gravity="center_vertical"
+                android:padding="5dp"
+                android:text="Lock Release"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="@color/app_blue"
                 android:id="@+id/lockReleaseSwitch"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lockAngleLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/txtLockAngle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Lock Release"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/edtAngle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edit_background"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:hint="Range(65 to 125)"
+                android:padding="8dp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>

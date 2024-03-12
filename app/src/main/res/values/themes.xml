@@ -1,9 +1,15 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.AssaAbloyAssessment" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.AssaAbloyAssessment" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/app_blue</item>
+        <item name="colorPrimaryDark">@color/app_blue</item>
+        <item name="colorAccent">@color/app_blue</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="contentInsetEnd">10dp</item>
     </style>
 
     <style name="Theme.AssaAbloyAssessment" parent="Base.Theme.AssaAbloyAssessment" />
+
 </resources>

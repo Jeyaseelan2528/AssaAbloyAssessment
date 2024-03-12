@@ -2,7 +2,9 @@ package com.lockdoor.assaabloyassessment.ui
 
 import android.content.Context
 import android.os.Bundle
+import android.view.Menu
 import android.view.View
+import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.SearchView
 import android.widget.SearchView.OnQueryTextListener
@@ -26,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     val finalList = ArrayList<LockModel>()
     lateinit var searchView: SearchView
     var lockAdapter : LockConfigurationAdapter? = null
+    lateinit var btnConfigure: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -36,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerView)
         searchView = findViewById(R.id.searchView)
         recyclerView.layoutManager = LinearLayoutManager(this)
+        supportActionBar?.title = "Lock Settings"
 
         //ShowProgress bar during API call
         progressBar.visibility = View.VISIBLE
@@ -167,10 +171,12 @@ class MainActivity : AppCompatActivity() {
                 p0?.let { filter(it) }
                 return false
             }
-
         })
     }
-
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
     private fun filter(text: String) {
         val filteredList: ArrayList<LockModel> = ArrayList()
 

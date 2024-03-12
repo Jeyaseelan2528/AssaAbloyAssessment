@@ -11,19 +11,41 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <SearchView
-            android:id="@+id/searchView"
+        <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:iconifiedByDefault="false"
-            android:queryHint="Search Here" />
+            android:layout_height="wrap_content">
+
+            <SearchView
+                android:background="@drawable/edit_background"
+                android:layout_marginRight="10dp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/btnOk"
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:iconifiedByDefault="false"
+                android:queryHint="Search Here" />
+            <Button
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/app_blue"
+                android:layout_centerVertical="true"
+                android:id="@+id/btnOk"
+                android:layout_alignParentEnd="true"
+                android:text="Ok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
-            tools:listitem="@layout/lock_configuration_item_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/lock_configuration_item_layout" />
+
     </LinearLayout>
 
     <ProgressBar
