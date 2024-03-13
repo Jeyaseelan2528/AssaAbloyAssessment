@@ -1,5 +1,6 @@
 package com.lockdoor.assaabloyassessment.ui
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.DialogInterface
 import android.content.SharedPreferences
@@ -53,7 +54,8 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         supportActionBar?.title = "Lock Settings"
 
-        btnOk = findViewById(R.id.btnOk);
+        btnOk = findViewById(R.id.btnOk)
+
 
 
         //ShowProgress bar during API call
@@ -126,6 +128,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun parseDefaultResponse(jsonObject: JsonObject) {
         finalList = ArrayList()
         parseLockVoltageAndSetDefaultValue(jsonObject)
@@ -310,6 +313,7 @@ class MainActivity : AppCompatActivity() {
             listItems.add(listItemModel)
             id++
         }
+
 //If the user has already made selection on the data then show the selected ones else show the default one comes from API
         if (sharedPreferences.getString("lockVoltagePrimary", "")!!.isNotEmpty()) {
             finalList.add(
