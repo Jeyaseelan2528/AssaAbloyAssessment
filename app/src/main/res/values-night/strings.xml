@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="confirmation_message">All the Lock Settings Parameters have been saved successfully for both Primary and Secondary doors</string>
+</resources>

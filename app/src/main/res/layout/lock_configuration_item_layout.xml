@@ -24,13 +24,14 @@
             android:visibility="gone">
 
             <TextView
+                android:fontFamily="@font/space_mono_bold"
                 android:id="@+id/txtConfigurationName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="Lock Voltage"
-                android:textSize="18dp"
+                android:text="@string/lock_voltage"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -48,10 +49,11 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:fontFamily="@font/space_mono_bold"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
-                        android:text="Primary"
+                        android:text="@string/primary"
                         android:gravity="center"
                         android:textColor="@color/app_blue"
                         android:textStyle="bold" />
@@ -77,11 +79,12 @@
                     </RelativeLayout>
 
                     <EditText
+                        android:fontFamily="@font/space_mono_regular"
                         android:id="@+id/primaryLockReleaseEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/edit_background"
-                        android:hint="Range(0.1 to 2.0)"
+                        android:hint="@string/range_0_1_to_2_0"
                         android:gravity="center"
                         android:imeOptions="actionDone"
                         android:inputType="numberDecimal"
@@ -101,7 +104,8 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:padding="5dp"
-                        android:text="Secondary"
+                        android:fontFamily="@font/space_mono_bold"
+                        android:text="@string/secondary"
                         android:layout_gravity="center"
                         android:textColor="@color/app_blue"
                         android:textStyle="bold" />
@@ -128,12 +132,13 @@
                     </RelativeLayout>
 
                     <EditText
+                        android:fontFamily="@font/space_mono_regular"
                         android:gravity="center"
                         android:id="@+id/secondaryLockReleaseEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/edit_background"
-                        android:hint="Range(0.1 to 2.0)"
+                        android:hint="@string/range_0_1_to_2_0"
                         android:imeOptions="actionDone"
                         android:inputType="numberDecimal"
                         android:padding="8dp" />
@@ -156,8 +161,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:padding="5dp"
-                android:text="Lock Release"
-                android:textSize="18dp"
+                android:fontFamily="@font/space_mono_bold"
+                android:text="@string/lock_release"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <androidx.appcompat.widget.SwitchCompat
@@ -183,11 +189,13 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="Lock Release"
-                android:textSize="18dp"
+                android:fontFamily="@font/space_mono_bold"
+                android:text="@string/lock_angle"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <EditText
+                android:fontFamily="@font/space_mono_regular"
                 android:id="@+id/edtAngle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -198,7 +206,7 @@
                 android:background="@drawable/edit_background"
                 android:gravity="center"
                 android:inputType="numberDecimal"
-                android:hint="Range(65 to 125)"
+                android:hint="@string/range_65_to_125"
                 android:padding="8dp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>

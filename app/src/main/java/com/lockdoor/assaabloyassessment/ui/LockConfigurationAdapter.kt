@@ -41,6 +41,8 @@ class LockConfigurationAdapter(private var list: List<LockModel>) :
     override fun onBindViewHolder(holder: LockConfigurationAdapter.LockViewHolder, position: Int) {
         val lockModel = list[position]
 
+        //Handling all the different UI type in one file itself
+        //Based on the configuration name hide and show the UI and set the default data in the recycler view
         if (lockModel.configurationName.equals("Lock Release")) {
             holder.parentLayout.visibility = View.GONE
             holder.lockReleaseLayout.visibility = View.VISIBLE
@@ -84,10 +86,12 @@ class LockConfigurationAdapter(private var list: List<LockModel>) :
                 holder.secondarySpinner.visibility = View.VISIBLE
                 holder.primaryArrow.visibility = View.VISIBLE
                 holder.secondaryArrow.visibility = View.VISIBLE
+                //Take the default value and set it to the selection by default
                 val primaryDefault =
                     lockModel.itemModel.find { it.itemName == lockModel.primaryDefaultValue }?.itemId
                 val secondaryDefault =
                     lockModel.itemModel.find { it.itemName == lockModel.secondaryDefaultValue }?.itemId
+                //Load the value in the spinner adapter
                 val primaryAdapter =
                     ArrayAdapter(
                         holder.itemView.context,
@@ -153,35 +157,33 @@ class LockConfigurationAdapter(private var list: List<LockModel>) :
             primaryArrow = itemView.findViewById(R.id.primaryArrow)
             secondaryArrow = itemView.findViewById(R.id.secondaryArrow)
 
+            //Remove the focus for edit text when click on on recycler view
             lockReleaseTimePrimaryEdit.onFocusChangeListener =
                 View.OnFocusChangeListener { view, b ->
                     if (!b) {
                         manageRange(
                             lockReleaseTimePrimaryEdit,
                             itemView.context,
-                            list,
-                            adapterPosition
                         )
                         list[adapterPosition].primaryDefaultValue =
                             lockReleaseTimePrimaryEdit.text.toString().trim().toDouble().toString()
 
                     }
                 }
+            //Remove the focus for edit text when click on on recycler view
             lockReleaseTimeSecondaryEdit.onFocusChangeListener =
                 View.OnFocusChangeListener { view, b ->
                     if (!b) {
                         manageRange(
                             lockReleaseTimeSecondaryEdit,
                             itemView.context,
-                            list,
-                            adapterPosition
                         )
                         list[adapterPosition].secondaryDefaultValue =
                             lockReleaseTimeSecondaryEdit.text.toString().trim().toDouble()
                                 .toString()
                     }
                 }
-
+            //Remove the focus for edit text when click on on recycler view
             itemView.setOnTouchListener { p0, p1 ->
                 lockReleaseTimePrimaryEdit.clearFocus()
                 lockReleaseTimeSecondaryEdit.clearFocus()
@@ -200,6 +202,7 @@ class LockConfigurationAdapter(private var list: List<LockModel>) :
                 }
 
             })
+            //Store the Primary Door selection from the spinner
             primarySpinner.onItemSelectedListener = object : OnItemSelectedListener {
                 override fun onItemSelected(
                     parentView: AdapterView<*>?,
@@ -215,7 +218,7 @@ class LockConfigurationAdapter(private var list: List<LockModel>) :
 
                 }
             }
-
+            //Store the secondary door selection from the spinner
             secondarySpinner.onItemSelectedListener = object : OnItemSelectedListener {
                 override fun onItemSelected(
                     parentView: AdapterView<*>?,
@@ -231,7 +234,7 @@ class LockConfigurationAdapter(private var list: List<LockModel>) :
 
                 }
             }
-
+            //Store the selection of user preference
             lockReleaseSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
                 list[adapterPosition].primaryDefaultValue = if (isChecked) "on" else "off"
                 list[adapterPosition].secondaryDefaultValue = if (isChecked) "on" else "off"
@@ -240,6 +243,7 @@ class LockConfigurationAdapter(private var list: List<LockModel>) :
     }
 }
 
+//Validate the Lock Angle data to be a valid one
 private fun manageRangeAngle(editText: EditText, context: Context) {
     if (editText.text.isNotEmpty()) {
         editText.setText(
@@ -260,11 +264,10 @@ private fun manageRangeAngle(editText: EditText, context: Context) {
     }
 }
 
+//Validate the Lock Release time value for valid data
 private fun manageRange(
     editText: EditText,
     context: Context,
-    list: List<LockModel>,
-    position: Int
 ) {
     if (editText.text.isNotEmpty()) {
         editText.setText(

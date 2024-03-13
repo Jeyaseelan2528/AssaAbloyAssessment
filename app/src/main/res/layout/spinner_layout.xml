@@ -4,6 +4,7 @@
     style="?android:attr/spinnerItemStyle"
     android:singleLine="true"
     android:padding="8dp"
+    android:fontFamily="@font/space_mono_regular"
     android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

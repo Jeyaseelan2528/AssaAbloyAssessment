@@ -20,22 +20,23 @@
 
             <SearchView
                 android:background="@drawable/edit_background"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_centerVertical="true"
-                android:layout_toLeftOf="@+id/btnOk"
+                android:layout_toStartOf="@+id/btnOk"
                 android:id="@+id/searchView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:iconifiedByDefault="false"
                 android:queryHint="Search Here" />
             <Button
+                android:fontFamily="@font/space_mono_bold"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:backgroundTint="@color/app_blue"
                 android:layout_centerVertical="true"
                 android:id="@+id/btnOk"
                 android:layout_alignParentEnd="true"
-                android:text="Ok"
+                android:text="@string/ok"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </RelativeLayout>

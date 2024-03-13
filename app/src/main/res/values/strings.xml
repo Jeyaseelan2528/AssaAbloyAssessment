@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">AssaAbloyAssessment</string>
+    <string name="confirmation_message">All the Lock Settings Parameters have been saved successfully for both Primary and Secondary doors</string>
+    <string name="close">Close</string>
+    <string name="congratulations">Congratulations</string>
+    <string name="ok">Ok</string>
+    <string name="reset">Reset</string>
+    <string name="primary">Primary</string>
+    <string name="range_0_1_to_2_0">Range(0.1 to 2.0)</string>
+    <string name="secondary">Secondary</string>
+    <string name="range_65_to_125">Range(65 to 125)</string>
+    <string name="lock_voltage">Lock Voltage</string>
+    <string name="lock_release">Lock Release</string>
+    <string name="lock_angle">Lock Angle</string>
 </resources>

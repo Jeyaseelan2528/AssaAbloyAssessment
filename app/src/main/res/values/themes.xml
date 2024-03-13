@@ -7,7 +7,7 @@
         <item name="colorPrimaryDark">@color/app_blue</item>
         <item name="colorAccent">@color/app_blue</item>
         <item name="android:drawablePadding">10dp</item>
-        <item name="contentInsetEnd">10dp</item>
+        <item name="fontFamily">@font/space_mono_bold</item>
     </style>
 
     <style name="Theme.AssaAbloyAssessment" parent="Base.Theme.AssaAbloyAssessment" />
